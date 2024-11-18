@@ -17,7 +17,7 @@ async function getUserLocation() {
 }
 
 async function getLocationByCoordinates(lat, lon) {
-  const apiKey = "c663d0b0329b48bc7df3038c7d3f81ab";
+  const apiKey = process.env.API_KEY;
   const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
 
   try {
@@ -40,7 +40,8 @@ function searchWeatherByLocation() {
 }
 
 async function fetchWeatherData(location) {
-  const url = `https://api.weatherapi.com/v1/current.json?key=1ffa0449aebc4c59b8e160832241811=${location}&aqi=yes`;
+  const weatherapiKey = process.env.WEATHER_API_KEY;
+  const url = `https://api.weatherapi.com/v1/current.json?key=weatherapiKey=${location}&aqi=yes`;
 
   try {
     const res = await fetch(url);
